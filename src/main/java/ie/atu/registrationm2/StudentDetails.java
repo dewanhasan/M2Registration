@@ -15,6 +15,8 @@ import lombok.NoArgsConstructor;
 
 public class StudentDetails {
 
+    private Long id;
+
     @NotBlank(message = "firstname cannot be blank")
     @Size(min = 2, max = 15, message = "Firstname must be between 2 and 15 characters")
     private String firstname;
