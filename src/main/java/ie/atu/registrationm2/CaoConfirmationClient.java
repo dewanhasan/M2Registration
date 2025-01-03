@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Map;
 
-@FeignClient(name = "confirmation", url = "http://localhost:8083" )
+@FeignClient(name = "confirmation", url = "${feign.url}" )
 public interface CaoConfirmationClient {
 
     @PostMapping("/confirm")
