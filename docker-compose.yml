@@ -1,0 +1,22 @@
+version: '4.0'
+
+services:
+  RegistrationServiceM2:
+    image: registrationservicem2:latest
+    ports:
+      - 8082:8082
+    networks:
+      - cao_network
+
+
+  ConfirmationServiceM3:
+    image: confirmationservicem3:latest
+    ports:
+      - 8083:8083
+    networks:
+      - cao_network
+
+networks:
+  cao_network:
+    driver: bridge
+
