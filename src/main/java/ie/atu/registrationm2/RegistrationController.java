@@ -24,31 +24,10 @@ public class RegistrationController {
     }
 
 
-
-    @PostMapping("/approved")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public Map<String, String> RegistrationRequest(@RequestBody StudentDetails studentDetails){
-        System.out.println("Student Registered: " + studentDetails);
-        Map<String, String> response = new HashMap<>();
-        response.put("status", "accepted");
-        response.put("message", "Student " + studentDetails.getFirstname() + " " + studentDetails.getLastname()
-            + " Registered succesfully");
-        return response;
-    }
-
-
     @PostMapping("/register")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Map<String, String> registerStudent(@RequestBody StudentCourseRequest studentCourseRequest){
-        System.out.println("Student Id with Selected Courses: " + studentCourseRequest.getCourseList());
+        System.out.println("Selected Courses: " + studentCourseRequest.getCourseList());
         return caoConfirmationClient.confirmApplication(studentCourseRequest);
     }
-
-    /*@PostMapping("/register")
-    public ResponseEntity<String> registerStudent(@RequestBody StudentCourseRequest studentCourseRequest){
-        String studentName = studentCourseRequest.getStudentDetails().getFirstname() + " " + studentCourseRequest.getStudentDetails().getLastname();
-        String courses = studentCourseRequest.getCourseList().stream().map(Course::getCourseDetails).collect(Collectors.joining(", "));
-
-        String message = "Registered Student Name: " + studentName + ", Selected Courses" + courses;
-        return ResponseEntity.ok(message);
-    }*/
 }
